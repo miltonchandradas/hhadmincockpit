@@ -1,0 +1,13 @@
+{
+  "welcomeFile": "/cp.portal",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [{
+    "source": "^/tech/(.*)$",
+    "authenticationType": "none",
+    "destination": "dc_api",
+    "csrfProtection": false
+  }]
+}

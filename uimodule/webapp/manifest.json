@@ -1,0 +1,230 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "com.sap.dc",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+			"mainService": {
+				"uri": "/tech/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		},
+    "crossNavigation": {
+      "inbounds": {
+        "intent1": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "uimodule",
+          "action": "display",
+          "title": "Helpful Heroes - Administration Cockpit",
+          "description": "App Description",
+          "icon": "sap-icon://add"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal",
+			"sap_fiori_3"
+		],
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "com.sap.dc.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.60.0",
+      "libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.tnt": {},
+				"sap.ui.layout": {},
+				"sap.uxap": {},
+				"sap.suite.ui.microchart": {
+					"lazy": true
+				}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sap.dc.i18n.i18n"
+        }
+      },
+      "": {
+				"settings": {
+					"autoExpandSelect": true,
+					"operationMode": "Server",
+					"groupId": "$direct",
+					"synchronizationMode": "None"
+				},
+				"dataSource": "mainService"
+			},
+			"side": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/sideContent.json"
+			},
+			"alerts": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/alerts.json"
+			},
+			"customer": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/customers.json"
+			}
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "com.sap.dc.view",
+        "controlId": "mainContents",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "MasterSettings",
+					"name": "masterSettings",
+					"target": [
+						"detailSettings",
+						"masterSettings"
+					]
+				},
+				{
+					"pattern": "MasterSettings/SystemSettings",
+					"name": "systemSettings",
+					"target": [
+						"detailSettings",
+						"masterSettings"
+					]
+				},
+        {
+					"pattern": "MasterSettings/ActivitySettings",
+					"name": "activitySettings",
+					"target": [
+						"activitySettings",
+						"masterSettings"
+					]
+				},
+        {
+					"pattern": "MasterSettings/OpportunitySettings",
+					"name": "opportunitySettings",
+					"target": [
+						"opportunitySettings",
+						"masterSettings"
+					]
+				},
+        {
+					"pattern": "MasterSettings/CampaignSettings",
+					"name": "campaignSettings",
+					"target": [
+						"campaignSettings",
+						"masterSettings"
+					]
+				},
+				{
+					"pattern": "Statistics",
+					"name": "statistics",
+					"target": "statistics"
+				}
+			],
+			"targets": {
+				"home": {
+					"viewId": "home",
+					"viewName": "Home"
+				},
+				"appSettings": {
+					"viewId": "appSettings",
+					"viewName": "settings.AppSettings"
+				},
+				"masterSettings": {
+					"viewId": "masterSettings",
+					"viewName": "settings.MasterSettings",
+					"controlId": "appSettings",
+					"controlAggregation": "masterPages",
+					"parent": "appSettings"
+				},
+				"detailSettings": {
+					"viewId": "detailSettings",
+					"viewName": "settings.DetailSettings",
+					"controlId": "appSettings",
+					"controlAggregation": "detailPages",
+					"parent": "appSettings"
+				},
+        "activitySettings": {
+					"viewId": "activitySettings",
+					"viewName": "settings.ActivitySettings",
+					"controlId": "appSettings",
+					"controlAggregation": "detailPages",
+					"parent": "appSettings"
+				},
+        "opportunitySettings": {
+					"viewId": "opportunitySettings",
+					"viewName": "settings.OpportunitySettings",
+					"controlId": "appSettings",
+					"controlAggregation": "detailPages",
+					"parent": "appSettings"
+				},
+        "campaignSettings": {
+					"viewId": "campaignSettings",
+					"viewName": "settings.CampaignSettings",
+					"controlId": "appSettings",
+					"controlAggregation": "detailPages",
+					"parent": "appSettings"
+				},
+				"statistics": {
+					"viewId": "statistics",
+					"viewName": "Statistics"
+				}
+			}
+		}
+	}
+}
