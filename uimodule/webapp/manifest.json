@@ -161,6 +161,14 @@
 						"opportunitySettings",
 						"masterSettings"
 					]
+        },
+        {
+					"pattern": "MasterSettings/ServiceSettings",
+					"name": "serviceSettings",
+					"target": [
+						"serviceSettings",
+						"masterSettings"
+					]
 				},
         {
 					"pattern": "MasterSettings/CampaignSettings",
@@ -209,6 +217,13 @@
         "opportunitySettings": {
 					"viewId": "opportunitySettings",
 					"viewName": "settings.OpportunitySettings",
+					"controlId": "appSettings",
+					"controlAggregation": "detailPages",
+					"parent": "appSettings"
+        },
+        "serviceSettings": {
+					"viewId": "serviceSettings",
+					"viewName": "settings.ServiceSettings",
 					"controlId": "appSettings",
 					"controlAggregation": "detailPages",
 					"parent": "appSettings"

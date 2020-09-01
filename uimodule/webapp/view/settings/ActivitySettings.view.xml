@@ -1,5 +1,5 @@
 <mvc:View controllerName="com.sap.dc.controller.settings.MasterSettings" xmlns="sap.uxap" xmlns:f="sap.ui.layout.form" xmlns:m="sap.m"
-	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt">
 	<m:Page showHeader="{device>/system/phone}" showNavButton="{device>/system/phone}" navButtonPress=".onNavButtonPress">
 		<m:landmarkInfo>
 			<m:PageAccessibleLandmarkInfo rootRole="Region" rootLabel="{i18n>SystemSettings_rootLabel}" contentRole="Main"
@@ -8,10 +8,10 @@
 		<ObjectPageLayout id="objectPageLayout">
 			<headerTitle>
 				<ObjectPageHeader objectTitle="{i18n>activitySettingsTitle}" objectSubtitle="{i18n>activitySettingsDescriptionTitle}">
-					<actions>
+					<!-- <actions>
 						<ObjectPageHeaderActionButton id="save" text="{i18n>save}" hideText="false" press=".onSavePressed" type="Emphasized"/>
 						<ObjectPageHeaderActionButton id="cancel" text="{i18n>cancel}" press=".onCancelPressed" hideText="false"/>
-					</actions>
+					</actions> -->
 				</ObjectPageHeader>
 			</headerTitle>
 			<headerContent>
@@ -25,30 +25,37 @@
 						<ObjectPageSubSection id="shopOwnerId" title="{i18n>activityTitle}">
 							<m:VBox fitContainer="true">
 								<m:MessageStrip id="adzonesMessageStrip" class="sapUiSmallMarginBottom"
-									text="You can download the list of volunteers by clicking on the download icon" showIcon="true" type="Warning"/>
-								<m:Table id="adzonesTable" items="{path:'/Users', templateShareable: false}" inset="false" class="sapFDynamicPageAlignContent" width="auto"
+									text="You can download the list of activities by clicking on the download icon" showIcon="true" type="Warning"/>
+								<m:Table id="activitiesTable" items="{path:'/Activities', templateShareable: false}" inset="false" class="sapFDynamicPageAlignContent" width="auto"
 									alternateRowColors="true" fixedLayout="false">
 									<m:headerToolbar>
 										<m:OverflowToolbar>
 											<m:content>
-												<m:Title text="Volunteers" level="H2"/>
+												<m:Title text="Activities" level="H2"/>
 											</m:content>
 											<m:ToolbarSpacer/>
-											<m:Button icon="sap-icon://excel-attachment" press=".onDownloadVolunteers" tooltip="Download volunteers"/>
+											<m:Button icon="sap-icon://excel-attachment" press=".onDownloadActivities" tooltip="Download activities"/>
 										</m:OverflowToolbar>
 									</m:headerToolbar>
 									<m:columns>
-										<m:Column>
-											<m:Text text="{i18n>customerName}"/>
+										<m:Column minScreenWidth="XXLarge" width="20%" hAlign="End">
+											<m:Text text="Description"/>
+										</m:Column>
+                    <m:Column hAlign="Center">
+											<m:Text text="Initiated By"/>
 										</m:Column>
 										<m:Column minScreenWidth="Tablet">
-											<m:Text text="{i18n>email}"/>
+											<m:Text text="Start Date"/>
 										</m:Column>
 										<m:Column minScreenWidth="XXLarge" hAlign="End">
-											<m:Text text="{i18n>address}"/>
+											<m:Text text="Provider Name"/>
 										</m:Column>
 										<m:Column hAlign="Center">
-											<m:Text text="{i18n>karmaPoints}"/>
+											<m:Text text="Beneficiary Name"/>
+										</m:Column>
+
+                    <m:Column hAlign="Center">
+											<m:Text text="State"/>
 										</m:Column>
                     <m:Column hAlign="Center">
 											<m:Text text="{i18n>edit}"/>
@@ -60,19 +67,15 @@
 									<m:items>
 										<m:ColumnListItem>
 											<m:cells>
-												<m:Text text="{firstName} {lastName}"/>
-												<m:ObjectAttribute text="{email}" active="true"/>
-												<m:VBox>
-													<m:HBox justifyContent="End">
-														<m:ObjectStatus text="{ path: 'formattedAddress', formatter: '.formatter.getStreet' }" state="Information" />
-													</m:HBox>
-                          <m:HBox justifyContent="End">
-														<m:ObjectStatus text="{ path: 'formattedAddress', formatter: '.formatter.getCityStateZip' }" state="Information" />
-													</m:HBox>
-												</m:VBox>
-												<m:ObjectNumber number="{karmaPoints}" state="{= ${karmaPoints} > 50 ? 'Success' : 'Warning' }"/>
-                        <m:Button icon="sap-icon://edit" press=".onEditUser"/>
-                  <m:Button icon="sap-icon://delete" press=".onDeleteUser"/>
+												<m:Text text="{ parts: [{path: 'serviceDescription'}, {path: 'opportunityDescription'}], formatter: '.formatter.getActivityDescription' }"/>
+                        <m:Text text="{initiatedBy}" />
+                        <m:Text text="{ path: 'activityDate', formatter: '.formatter.getShortFormatDate' }"/>
+												<m:Text text="{providerFirstName} {providerLastName}" />
+                        <m:Text text="{beneficiaryFirstName} {beneficiaryLastName}" />
+
+                        <tnt:InfoLabel colorScheme="6" text="{state}"></tnt:InfoLabel>
+                        <m:Button icon="sap-icon://edit" press=".onEditTable($event, 'Activity')"/>
+                        <m:Button icon="sap-icon://delete" press=".onDeleteTable($event, 'Activity')"/>
 											</m:cells>
 										</m:ColumnListItem>
 									</m:items>

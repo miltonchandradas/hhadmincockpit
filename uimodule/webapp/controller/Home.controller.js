@@ -16,6 +16,40 @@ sap.ui.define([
 			Device.media.attachHandler(function (oDevice) {
 				this.getModel("view").setProperty("/isPhone", oDevice.name === "Phone");
 			}.bind(this));
+    },
+
+    onMasterPressed: function (sKey) {
+
+			switch (sKey) {
+				case "systemSettings": {
+					this.getRouter().navTo(sKey);
+					break;
+        }
+        case "activitySettings": {
+					this.getRouter().navTo(sKey);
+					break;
+        }
+        case "opportunitySettings": {
+					this.getRouter().navTo(sKey);
+					break;
+        }
+        case "campaignSettings": {
+					this.getRouter().navTo(sKey);
+					break;
+				}
+				default: {
+
+          let sMasterElementText = this.getBundleText(oContext.getProperty("titleI18nKey"));
+          MessageToast.show(this.getBundleText("clickHandlerMessage", [sMasterElementText]));
+
+					/* this.getBundleText(oContext.getProperty("titleI18nKey")).then(function(sMasterElementText){
+						this.getBundleText("clickHandlerMessage", [sMasterElementText]).then(function(sMessageText){
+							MessageToast.show(sMessageText);
+						});
+					}.bind(this)); */
+					break;
+				}
+			}
 		}
 	});
 });

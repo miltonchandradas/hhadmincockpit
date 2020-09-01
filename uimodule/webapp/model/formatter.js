@@ -1,6 +1,7 @@
 sap.ui.define([
-	"sap/base/strings/formatMessage"
-], function (formatMessage) {
+  "sap/base/strings/formatMessage",
+  "com/sap/dc/utils/dateutils"
+], function (formatMessage, dateutils) {
 	"use strict";
 
 	return {
@@ -27,6 +28,48 @@ sap.ui.define([
 
     getCityStateZip: function(sAddress) {
       return sAddress.slice(sAddress.indexOf(",") + 2);
+    },
+
+    getActivityDescription: function (serviceDesc, opportunityDesc) {
+      if (serviceDesc) {
+        return `${serviceDesc.substring(0, 25)}...`;
+      }
+
+      if (opportunityDesc) {
+        return `${opportunityDesc.substring(0, 25)}...`;
+      }
+
+      return "Description not available...";
+    },
+
+    getTruncatedText: function (sText) {
+      if (sText) {
+        return `${sText.substring(0, 25)}...`;
+      }
+
+      return "Description not available...";
+    },
+
+    getShortFormatDate: function (sDate) {
+      return dateutils.getShortFormat(sDate);
+    },
+
+    getState: function (state, sDate) {
+      let isPast = dateutils.isPast(sDate);
+
+      if (isPast)
+        return "Completed";
+
+      return "Pending";
+    },
+
+    getHighlight: function (sDate) {
+      let isPast = dateutils.isPast(sDate);
+
+      if (!isPast)
+        return "Success";
+
+      return "None";
     }
 	};
 });

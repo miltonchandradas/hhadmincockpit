@@ -46,6 +46,10 @@
 		"key": "opportunitySettings",
 		"selected": false
 	}, {
+		"titleI18nKey": "sideContentServices",
+		"key": "serviceSettings",
+		"selected": false
+	}, {
 		"titleI18nKey": "sideContentCampaign",
 		"key": "campaignSettings",
 		"selected": false

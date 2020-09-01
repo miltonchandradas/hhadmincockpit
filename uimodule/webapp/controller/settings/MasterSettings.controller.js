@@ -35,6 +35,10 @@ sap.ui.define([
 					this.getRouter().navTo(sKey);
 					break;
         }
+        case "serviceSettings": {
+					this.getRouter().navTo(sKey);
+					break;
+        }
         case "campaignSettings": {
 					this.getRouter().navTo(sKey);
 					break;
@@ -73,7 +77,46 @@ sap.ui.define([
 
 		onNavButtonPress: function  () {
 			this.getOwnerComponent().myNavBack();
-		},
+    },
+
+    onEditUser: function (oEvent) {
+      let src = oEvent.getSource();
+      let bindingContext = src.getBindingContext();
+
+      let firstName = bindingContext.getProperty("firstName");
+      let lastName = bindingContext.getProperty("lastName");
+
+      MessageToast.show(`Editing ${firstName} ${lastName}`);
+    },
+
+    onDeleteUser: function (oEvent) {
+      let src = oEvent.getSource();
+      let bindingContext = src.getBindingContext();
+
+      let firstName = bindingContext.getProperty("firstName");
+      let lastName = bindingContext.getProperty("lastName");
+
+      MessageToast.show(`Deleting ${firstName} ${lastName}`);
+    },
+
+    onEditTable: function (oEvent, entity) {
+      let src = oEvent.getSource();
+      let bindingContext = src.getBindingContext();
+
+      let id = bindingContext.getProperty("id");
+
+      MessageToast.show(`Editing ${entity} with id: ${id}`);
+    },
+
+    onDeleteTable: function (oEvent, entity) {
+      let src = oEvent.getSource();
+      let bindingContext = src.getBindingContext();
+
+      let id = bindingContext.getProperty("id");
+
+      MessageToast.show(`Deleting ${entity} with id: ${id}`);
+    },
+
 
 		/**
 		 * Returns a promises which resolves with the resource bundle value of the given key <code>sI18nKey</code>

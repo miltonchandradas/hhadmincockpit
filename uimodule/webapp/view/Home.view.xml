@@ -1,5 +1,5 @@
 <mvc:View controllerName="com.sap.dc.controller.Home" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f">
 	<Page showHeader="false">
 		<landmarkInfo>
 			<PageAccessibleLandmarkInfo rootRole="Region" rootLabel="{i18n>Home_rootLabel}" contentRole="Main" contentLabel="{i18n>Home_contentLabel}"/>
@@ -14,37 +14,41 @@
 			<l:BlockLayoutRow>
 				<l:BlockLayoutCell backgroundColorSet="ColorSet5" backgroundColorShade="ShadeD">
 					<l:VerticalLayout>
-						<core:Icon src="sap-icon://role" size="2.5rem" color="Default"/>
-						<Title id="administrationTile" text="{i18n>administrationTitle}" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
-						<Text text="{i18n>administrationContent}" class="sapUiTinyMarginBottom"/>
-						<Link text="{i18n>accessLink}" tooltip="{i18n>accessAdministrationLink}"/>
+						<!-- <core:Icon src="sap-icon://role" size="2.5rem" color="Default"/> -->
+            <f:Avatar src="sap-icon://leads" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd" backgroundColor="Random"/>
+						<Title id="administrationTile" text="Volunteers" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
+						<Text text="You can view, edit and delete volunteers here" class="sapUiTinyMarginBottom"/>
+						<Link text="{i18n>accessLink}" tooltip="{i18n>accessAdministrationLink}" press=".onMasterPressed('systemSettings')"/>
 						<Link text="{i18n>learnLink}" tooltip="{i18n>learnAdministrationTooltip}"/>
 					</l:VerticalLayout>
 				</l:BlockLayoutCell>
 				<l:BlockLayoutCell backgroundColorSet="ColorSet9" backgroundColorShade="ShadeD">
 					<l:VerticalLayout>
-						<core:Icon src="sap-icon://add-product" size="2.5rem" color="Default"/>
-						<Title id="productTile" text="{i18n>productTitle}" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
-						<Text text="{i18n>productContent}" class="sapUiTinyMarginBottom"/>
-						<Link text="{i18n>accessLink}" tooltip="{i18n>accessProductsLink}"/>
+						<!-- <core:Icon src="sap-icon://add-product" size="2.5rem" color="Default"/> -->
+            <f:Avatar src="sap-icon://add-activity" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd" backgroundColor="Random"/>
+						<Title id="productTile" text="Activities" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
+						<Text text="You can view, edit and delete all past and future volunteering activities here" class="sapUiTinyMarginBottom"/>
+						<Link text="{i18n>accessLink}" tooltip="{i18n>accessProductsLink}" press=".onMasterPressed('activitySettings')"/>
 						<Link text="{i18n>learnLink}" tooltip="{i18n>learnProductsTooltip}"/>
 					</l:VerticalLayout>
 				</l:BlockLayoutCell>
 				<l:BlockLayoutCell backgroundColorSet="ColorSet5" backgroundColorShade="ShadeD">
 					<l:VerticalLayout>
-						<core:Icon src="sap-icon://customer-financial-fact-sheet" size="2.5rem" color="Default"/>
-						<Title text="{i18n>revenueTitle}" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
-						<Text text="{i18n>revenueContent}" class="sapUiTinyMarginBottom"/>
-						<Link text="{i18n>accessLink}" tooltip="{i18n>accessRevenueLink}"/>
+						<!-- <core:Icon src="sap-icon://customer-financial-fact-sheet" size="2.5rem" color="Default"/> -->
+            <f:Avatar src="sap-icon://opportunity" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd" backgroundColor="Random"/>
+						<Title text="Volunteering Opportunities" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
+						<Text text="You can view, edit and delete all volunteering opportunities here" class="sapUiTinyMarginBottom"/>
+						<Link text="{i18n>accessLink}" tooltip="{i18n>accessRevenueLink}" press=".onMasterPressed('opportunitySettings')"/>
 						<Link text="{i18n>learnLink}" tooltip="{i18n>learnRevenueTooltip}"/>
 					</l:VerticalLayout>
 				</l:BlockLayoutCell>
 				<l:BlockLayoutCell backgroundColorSet="ColorSet9" backgroundColorShade="ShadeD">
 					<l:VerticalLayout>
-						<core:Icon id="supplierIcon" src="sap-icon://supplier" size="2.5rem" color="Default"/>
-						<Title text="{i18n>supplierTitle}" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
-						<Text text="{i18n>supplierContent}" class="sapUiTinyMarginBottom"/>
-						<Link text="{i18n>accessLink}" tooltip="{i18n>accessSuppliersLink}"/>
+						<!-- <core:Icon id="supplierIcon" src="sap-icon://supplier" size="2.5rem" color="Default"/> -->
+            <f:Avatar src="sap-icon://marketing-campaign" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd" backgroundColor="Random"/>
+						<Title text="Campaign" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
+						<Text text="You can view all campaign options here" class="sapUiTinyMarginBottom"/>
+						<Link text="{i18n>accessLink}" tooltip="{i18n>accessSuppliersLink}" press=".onMasterPressed('campaignSettings')"/>
 						<Link text="{i18n>learnLink}" tooltip="{i18n>learnSuppliersTooltip}"/>
 					</l:VerticalLayout>
 				</l:BlockLayoutCell>
@@ -52,7 +56,8 @@
 			<l:BlockLayoutRow>
 				<l:BlockLayoutCell backgroundColorSet="ColorSet9" backgroundColorShade="ShadeD">
 					<l:VerticalLayout>
-						<core:Icon src="sap-icon://thumb-up" size="2.5rem" color="Default"/>
+						<!-- <core:Icon src="sap-icon://thumb-up" size="2.5rem" color="Default"/> -->
+            <f:Avatar src="sap-icon://thumb-up" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd" backgroundColor="Random"/>
 						<Title text="{i18n>socialMediaTitle}" level="H3" titleStyle="H2" class="sapUiTinyMarginTopBottom"/>
 						<Text text="{i18n>socialMediaContent}" class="sapUiTinyMarginBottom"/>
 						<Link text="{i18n>accessLink}" tooltip="{i18n>accessSocialLink}"/>
