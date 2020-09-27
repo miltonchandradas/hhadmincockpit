@@ -16,10 +16,11 @@ sap.ui.define([
 		 * @returns {string} path to image
 		 */
 		srcImageValue : function (bIsPhone, sImagePath) {
+      // images/walking.jpg"
 			if (bIsPhone) {
-				sImagePath += "_small";
+				sImagePath += "/images/walking_small.jpg";
 			}
-			return sImagePath + ".jpg";
+			return sImagePath + "/images/walking.jpg";
     },
 
     getStreet: function(sAddress) {

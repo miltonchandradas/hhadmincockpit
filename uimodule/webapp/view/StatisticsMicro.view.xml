@@ -2,13 +2,33 @@
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:mc="sap.suite.ui.microchart">
-	<l:BlockLayout
+	xmlns:mc="sap.suite.ui.microchart"
+  xmlns:core="sap.ui.core"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+  <VBox>
+    <html:iframe src="https://innovator-2020.eu10.hcs.cloud.sap/sap/fpa/ui/tenants/38e34/bo/story/B83382FDE20F32450B1BADB54547CF41" height="600px" width="100%"/>
+  </VBox>
+	<!-- <l:BlockLayout
 		id="statisticsBlockLayout"
 		busy="false"
 		background="Dashboard">
 		<l:BlockLayoutRow
 			rowColorSet="ColorSet2">
+      <l:BlockLayoutCell>
+      <Title
+					text="{i18n>ovSysUptime}"
+					level="H4"
+					titleStyle="H2"
+					width="100%"/>
+				<Title
+					text="{i18n>orderStatusDate}"
+					level="H5"
+					width="100%"
+					class="sapUiSmallMarginBottom"/>
+
+          <html:iframe width="420" height="315"src="https://www.youtube.com/embed/tgbNymZ7vqY">src="https://www.youtube.com/embed/tgbNymZ7vqY"></html:iframe>
+
+      </l:BlockLayoutCell>
 			<l:BlockLayoutCell>
 				<Title
 					text="{i18n>sysResUsage}"
@@ -333,5 +353,5 @@
 				</FlexBox>
 			</l:BlockLayoutCell>
 		</l:BlockLayoutRow>
-	</l:BlockLayout>
+	</l:BlockLayout> -->
 </mvc:View>

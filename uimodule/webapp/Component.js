@@ -1,7 +1,7 @@
 sap.ui.define([
   "sap/ui/core/UIComponent",
-	"./model/models",
-	"sap/ui/core/routing/History"
+  "./model/models",
+  "sap/ui/core/routing/History"
 ], function (UIComponent, models, History) {
   "use strict";
 
@@ -25,6 +25,14 @@ sap.ui.define([
 
       // set the device model
       this.setModel(models.createDeviceModel(), "device");
+
+      let rootPath = jQuery.sap.getModulePath("com.sap.dc"); // your resource root
+
+      let imageModel = new sap.ui.model.json.JSONModel({
+        path: rootPath,
+      });
+
+      this.setModel(imageModel, "imageModel");
     },
 
     myNavBack: function () {

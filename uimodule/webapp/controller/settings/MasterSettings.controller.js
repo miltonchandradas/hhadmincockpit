@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 sap.ui.define([
 	"com/sap/dc/controller/BaseController",
 	"sap/m/MessageToast",
@@ -115,6 +116,15 @@ sap.ui.define([
       let id = bindingContext.getProperty("id");
 
       MessageToast.show(`Deleting ${entity} with id: ${id}`);
+    },
+
+    onSendEmail: function() {
+
+        fetch("/tech/sendEmailsToVolunteers()")
+          .then(res => res.json())
+          .then(data => console.log(data))
+          .catch(err => console.log(err));
+        MessageToast.show("Email sent to volunteers...");
     },
 
 
